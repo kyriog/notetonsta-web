@@ -1,5 +1,7 @@
 package com.supinfo.notetonsta.entity;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,6 +10,8 @@ public class Campus {
 	@GeneratedValue
 	private int id;
 	private String name;
+	@OneToMany(mappedBy="Intervention")
+	private List<Intervention> interventions;
 	
 	
 	public int getId() {
@@ -21,5 +25,8 @@ public class Campus {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public List<Intervention> listInterventions() {
+		return interventions;
 	}
 }

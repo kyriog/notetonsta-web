@@ -1,6 +1,7 @@
 package com.supinfo.notetonsta.entity;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -22,6 +23,8 @@ public class Intervention {
 	@Temporal(value = TemporalType.DATE)
 	private Date dateEnd;
 	private int status;
+	@OneToMany(mappedBy="Evaluation")
+	private List<Evaluation> evaluations;
 	
 	
 	public int getId() {
@@ -71,5 +74,8 @@ public class Intervention {
 	}
 	public void setStatus(int status) {
 		this.status = status;
+	}
+	public List<Evaluation> listEvaluations() {
+		return evaluations;
 	}
 }
