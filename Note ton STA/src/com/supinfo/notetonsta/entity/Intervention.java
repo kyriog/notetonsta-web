@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class Intervention {
 	@Id
 	@GeneratedValue
-	private int Id;
+	private Long Id;
 	private String name;
 	@ManyToOne
 	@JoinColumn(name="speaker_fk")
@@ -27,10 +27,10 @@ public class Intervention {
 	private List<Evaluation> evaluations;
 	
 	
-	public int getId() {
+	public Long getId() {
 		return Id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		Id = id;
 	}
 	public String getName() {

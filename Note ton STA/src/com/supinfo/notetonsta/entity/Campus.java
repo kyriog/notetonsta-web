@@ -8,16 +8,16 @@ import javax.persistence.*;
 public class Campus {
 	@Id
 	@GeneratedValue
-	private int id;
+	private Long id;
 	private String name;
 	@OneToMany(mappedBy="Intervention")
 	private List<Intervention> interventions;
 	
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getName() {

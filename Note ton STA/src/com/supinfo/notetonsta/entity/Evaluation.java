@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Evaluation {
 	@Id
 	@GeneratedValue
-	private int id;
+	private Long id;
 	@ManyToOne
 	@JoinColumn(name="intervention_fk")
 	private Intervention intervention;
@@ -21,10 +21,10 @@ public class Evaluation {
 	private String comment;
 	
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public Intervention getIntervention() {
