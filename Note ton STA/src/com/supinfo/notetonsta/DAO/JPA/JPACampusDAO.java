@@ -74,7 +74,7 @@ public class JPACampusDAO implements CampusDAO {
 	}
 
 	@Override
-	public Campus getCampusById(int id) {
+	public Campus getCampusById(Long id) {
 		EntityManager em = emf.createEntityManager();
 		
 		try {

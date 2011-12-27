@@ -9,5 +9,5 @@ public interface CampusDAO {
 	public void updateCampus(Campus campus);
 	public void deleteCampus(Campus campus);
 	public List<Campus> listAllCampuses();
-	public Campus getCampusById(int id);
+	public Campus getCampusById(Long id);
 }
