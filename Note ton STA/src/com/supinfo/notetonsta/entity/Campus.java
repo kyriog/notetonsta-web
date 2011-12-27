@@ -10,7 +10,7 @@ public class Campus {
 	@GeneratedValue
 	private Long id;
 	private String name;
-	@OneToMany(mappedBy="Intervention")
+	@OneToMany(mappedBy="campus")
 	private List<Intervention> interventions;
 	
 	

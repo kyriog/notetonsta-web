@@ -13,7 +13,7 @@ public class Speaker {
 	private String lastName;
 	private String email;
 	private String password;
-	@OneToMany(mappedBy="Intervention")
+	@OneToMany(mappedBy="speaker")
 	private List<Intervention> interventions;
 	
 	

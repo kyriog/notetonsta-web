@@ -23,7 +23,7 @@ public class Intervention {
 	@Temporal(value = TemporalType.DATE)
 	private Date dateEnd;
 	private int status;
-	@OneToMany(mappedBy="Evaluation")
+	@OneToMany(mappedBy="intervention")
 	private List<Evaluation> evaluations;
 	
 	
