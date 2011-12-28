@@ -6,5 +6,5 @@ public interface InterventionDAO {
 	public void addIntervention(Intervention intervention);
 	public void updateIntervention(Intervention intervention);
 	public void deleteIntervention(Intervention intervention);
-	public Intervention getInterventionById(int id);
+	public Intervention getInterventionById(Long id);
 }

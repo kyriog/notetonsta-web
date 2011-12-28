@@ -56,7 +56,7 @@ public class JPAInterventionDAO implements InterventionDAO {
 	}
 
 	@Override
-	public Intervention getInterventionById(int id) {
+	public Intervention getInterventionById(Long id) {
 		EntityManager em = emf.createEntityManager();
 		
 		try {

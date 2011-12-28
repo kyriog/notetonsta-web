@@ -60,7 +60,7 @@ EntityManagerFactory emf;
 	}
 
 	@Override
-	public Speaker getSpeakerById(int id) {
+	public Speaker getSpeakerById(Long id) {
 		EntityManager em = emf.createEntityManager();
 		
 		try {
