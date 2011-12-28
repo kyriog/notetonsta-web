@@ -11,6 +11,8 @@ public class Speaker {
 	private Long id;
 	private String firstName;
 	private String lastName;
+	@Transient
+	private String fullName;
 	private String email;
 	private String password;
 	@OneToMany(mappedBy="speaker")
@@ -34,6 +36,11 @@ public class Speaker {
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+	public String getFullName() {
+		if(fullName == null)
+			fullName = firstName+" "+lastName;
+		return fullName;
 	}
 	public String getEmail() {
 		return email;
