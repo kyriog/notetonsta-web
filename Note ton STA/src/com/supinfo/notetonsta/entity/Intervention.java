@@ -69,8 +69,16 @@ public class Intervention {
 	public void setDateEnd(Date dateEnd) {
 		this.dateEnd = dateEnd;
 	}
-	public int getStatus() {
-		return status;
+	public String getStatus() {
+		switch(status) {
+		case 0:
+			return "A commencé";
+		case 1:
+			return "En cours";
+		case 2:
+			return "Est terminé";
+		}
+		return null;
 	}
 	public void setStatus(int status) {
 		this.status = status;
