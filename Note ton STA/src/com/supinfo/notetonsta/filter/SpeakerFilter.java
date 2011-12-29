@@ -28,7 +28,7 @@ public class SpeakerFilter implements Filter {
 			HttpServletRequest httpServletRequest = (HttpServletRequest) req;
 			HttpServletResponse httpServletResponse = (HttpServletResponse) resp;
 			
-			if(httpServletRequest.getSession().getAttribute("userId") == null) {
+			if(httpServletRequest.getSession().getAttribute("speakerId") == null) {
 				httpServletResponse.sendRedirect(config.getServletContext().getContextPath() + "/login");
 				return;
 			}
