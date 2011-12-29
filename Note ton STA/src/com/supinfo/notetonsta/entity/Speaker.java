@@ -1,8 +1,13 @@
 package com.supinfo.notetonsta.entity;
 
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import javax.persistence.*;
+
+import sun.misc.BASE64Encoder;
 
 @Entity
 public class Speaker {
@@ -52,7 +57,19 @@ public class Speaker {
 		return password;
 	}
 	public void setPassword(String password) {
-		this.password = password;
+		MessageDigest md;
+		try {
+			md = MessageDigest.getInstance("SHA");
+			md.update(password.getBytes("UTF-8"));
+			password = (new BASE64Encoder()).encode(md.digest());
+			this.password = password;
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	public List<Intervention> listInterventions() {
 		return interventions;
