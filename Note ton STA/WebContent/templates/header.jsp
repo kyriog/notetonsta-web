@@ -31,7 +31,7 @@
 							<li><a href="<c:out value="${baseUrl}" />/register">Vous êtes STA ? Créez votre compte</a></li>
 						</ul>
 						<form class="pull-right" action="<c:out value="${baseUrl}" />/login" method="POST">
-							<input type="text" name="username" required class="input-small" placeholder="Nom de compte" />
+							<input type="text" name="username" required class="input-small" placeholder="Adresse email" />
 							<input type="password" name="password" required class="input-small" placeholder="Mot de passe" />
 							<button type="submit" class="btn">Connexion</button>
 						</form>
