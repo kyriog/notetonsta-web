@@ -5,13 +5,13 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.supinfo.notetonsta.DAO.CampusDAO;
 import com.supinfo.notetonsta.DAO.DAOFactory;
 import com.supinfo.notetonsta.entity.Campus;
+import com.supinfo.notetonsta.entity.Intervention;
 
 @WebServlet("/campus/")
 public class CampusServlet extends BaseServlet {
@@ -36,6 +36,9 @@ public class CampusServlet extends BaseServlet {
 			if(campus == null) {
 				response.sendRedirect(getServletContext().getContextPath() + "/");
 			} else {
+				request.setAttribute("campusName", campus.getName());
+				List<Intervention> interventions = campus.listInterventions();
+				request.setAttribute("interventions", interventions);
 				request.getRequestDispatcher("/listInterventions.jsp").forward(request, response);
 			}
 		}
