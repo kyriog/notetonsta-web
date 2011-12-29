@@ -8,6 +8,7 @@
 <title>Note Ton STA<c:if test="${not empty pageTitle}"> − <c:out value="${pageTitle}" /></c:if></title>
 <link rel="stylesheet" type="text/css" href="<c:out value="${baseUrl}" />/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="<c:out value="${baseUrl}" />/css/style.css" />
+<script type="text/javascript" src="<c:out value="${baseUrl}" />/js/jquery-1.7.1.min.js"></script>
 </head>
 <body>
 	<div class="topbar">
