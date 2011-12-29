@@ -1,11 +1,15 @@
 package com.supinfo.notetonsta.DAO.JPA;
 
+import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
+
+import sun.misc.BASE64Encoder;
 
 import com.supinfo.notetonsta.DAO.SpeakerDAO;
 import com.supinfo.notetonsta.entity.Speaker;
@@ -72,21 +76,28 @@ EntityManagerFactory emf;
 	}
 
 	@Override
-	public boolean authenticateSpeaker(String username, String password) {
+	public Long authenticateSpeaker(String email, String password) {
 		EntityManager em = emf.createEntityManager();
 		MessageDigest md;
 		try {
-			md = MessageDigest.getInstance("SHA-1");
-			password = new String(md.digest(password.getBytes()));
-			Query query = em.createQuery("SELECT id FROM Speaker WHERE username = \""+username+"\" AND password = \""+password+"\"");
-			if(query.getSingleResult() instanceof Speaker)
-				return true;
+			md = MessageDigest.getInstance("SHA");
+			md.update(password.getBytes("UTF-8"));
+			password = (new BASE64Encoder()).encode(md.digest());
+			Query query = em.createQuery("SELECT id FROM Speaker WHERE email = :email AND password = :password");
+			query.setParameter("email", email);
+			query.setParameter("password", password);
+			return (Long) query.getSingleResult();
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch(NoResultException e) {
+			return (long) 0;
 		} finally {
 			em.close();
 		}
-		return false;
+		return null;
 	}
 
 }

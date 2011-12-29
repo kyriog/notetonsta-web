@@ -7,5 +7,5 @@ public interface SpeakerDAO {
 	public void updateSpeaker(Speaker speaker);
 	public void deleteSpeaker(Speaker speaker);
 	public Speaker getSpeakerById(Long id);
-	public boolean authenticateSpeaker(String username,String password);
+	public Long authenticateSpeaker(String email,String password);
 }
