@@ -2,8 +2,10 @@ package com.supinfo.notetonsta.DAO.JPA;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 
 import com.supinfo.notetonsta.DAO.InterventionDAO;
+import com.supinfo.notetonsta.entity.Campus;
 import com.supinfo.notetonsta.entity.Intervention;
 
 public class JPAInterventionDAO implements InterventionDAO {
@@ -60,7 +62,9 @@ public class JPAInterventionDAO implements InterventionDAO {
 		EntityManager em = emf.createEntityManager();
 		
 		try {
-			Intervention intervention = em.find(Intervention.class, id);
+			Query q = em.createQuery("SELECT i FROM Intervention i LEFT JOIN FETCH i.evaluations WHERE i.id = :id");
+			q.setParameter("id", id);
+			Intervention intervention = (Intervention) q.getSingleResult();
 			return intervention;
 		} finally {
 			em.close();
