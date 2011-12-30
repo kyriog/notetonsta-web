@@ -25,6 +25,12 @@ public class Intervention {
 	private int status;
 	@OneToMany(mappedBy="intervention")
 	private List<Evaluation> evaluations;
+	@Transient
+	private float speakerNote = (float) 0;
+	@Transient
+	private float slideNote = (float) 0;
+	@Transient
+	private float globalNote = (float) 0;
 	
 	
 	public Long getId() {
@@ -85,5 +91,45 @@ public class Intervention {
 	}
 	public List<Evaluation> listEvaluations() {
 		return evaluations;
+	}
+	public int getNoteCount() {
+		return evaluations.size();
+	}
+	
+	public float getSpeakerNote() {
+		if(speakerNote == 0) {
+			float cumulative = 0;
+			int counter = 0;
+			for(Evaluation e : evaluations) {
+				cumulative += e.getSpeakerAbility();
+				cumulative += e.getSpeakerAnswers();
+				cumulative += e.getSpeakerKnowledge();
+				counter++;
+			}
+			speakerNote = (cumulative/(counter*3));
+		}
+		return speakerNote;
+	}
+	
+	public float getSlideNote() {
+		if(slideNote == 0) {
+			float cumulative = 0;
+			int counter = 0;
+			for(Evaluation e : evaluations) {
+				cumulative += e.getSlideContent();
+				cumulative += e.getSlideExamples();
+				cumulative += e.getSlideFormat();
+				counter++;
+			}
+			slideNote = (cumulative/(counter*3));
+		}
+		return slideNote;
+	}
+	
+	public float getGlobalNote() {
+		if(globalNote == 0) {
+			globalNote = (getSpeakerNote()+getSlideNote())/2;
+		}
+		return globalNote;
 	}
 }
