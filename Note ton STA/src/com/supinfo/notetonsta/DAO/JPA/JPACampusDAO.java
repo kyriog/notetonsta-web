@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import com.supinfo.notetonsta.DAO.CampusDAO;
@@ -80,8 +81,11 @@ public class JPACampusDAO implements CampusDAO {
 		try {
 			Query q = em.createQuery("SELECT c FROM Campus c LEFT JOIN FETCH c.interventions WHERE c.id = :id");
 			q.setParameter("id", id);
-			Campus campus = (Campus) q.getSingleResult();
-			return campus;
+			try {
+				return (Campus) q.getSingleResult();
+			} catch(NoResultException e) {
+				return null;
+			}
 		} finally {
 			em.close();
 		}
