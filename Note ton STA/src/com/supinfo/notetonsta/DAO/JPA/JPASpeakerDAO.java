@@ -12,6 +12,7 @@ import javax.persistence.Query;
 import sun.misc.BASE64Encoder;
 
 import com.supinfo.notetonsta.DAO.SpeakerDAO;
+import com.supinfo.notetonsta.entity.Intervention;
 import com.supinfo.notetonsta.entity.Speaker;
 
 public class JPASpeakerDAO implements SpeakerDAO {
@@ -68,7 +69,9 @@ EntityManagerFactory emf;
 		EntityManager em = emf.createEntityManager();
 		
 		try {
-			Speaker speaker = em.find(Speaker.class, id);
+			Query q = em.createQuery("SELECT s FROM Speaker s LEFT JOIN FETCH s.interventions WHERE s.id = :id");
+			q.setParameter("id", id);
+			Speaker speaker = (Speaker) q.getSingleResult();
 			return speaker;
 		} finally {
 			em.close();
