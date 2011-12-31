@@ -21,7 +21,7 @@
 					<c:when test="${logged}">
 						<ul class="nav">
 							<li><a href="<c:out value="${baseUrl}" />/speaker/intervention/">Mes interventions</a></li>
-							<li><a href="<c:out value="${baseUrl}" />/speaker/intervention/add">Ajouter une intervention</a></li>
+							<li><a href="<c:out value="${baseUrl}" />/speaker/intervention/edit/">Ajouter une intervention</a></li>
 						</ul>
 						<ul class="nav secondary-nav">
 							<li class="active"><a href="#">Bienvenue <c:out value="${speakerName}" /></a></li>
