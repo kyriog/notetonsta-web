@@ -1,5 +1,6 @@
 package com.supinfo.notetonsta.entity;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -63,14 +64,16 @@ public class Intervention {
 	public void setCampus(Campus campus) {
 		this.campus = campus;
 	}
-	public Date getDateStart() {
-		return dateStart;
+	public String getDateStart() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		return sdf.format(dateStart);
 	}
 	public void setDateStart(Date dateStart) {
 		this.dateStart = dateStart;
 	}
-	public Date getDateEnd() {
-		return dateEnd;
+	public String getDateEnd() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		return sdf.format(dateEnd);
 	}
 	public void setDateEnd(Date dateEnd) {
 		this.dateEnd = dateEnd;
