@@ -6,8 +6,7 @@
 <c:when test="${editIntervention}">Edition de l'intervention <c:out value="${intervention.name}" /></c:when>
 <c:otherwise>Ajout d'une intervention</c:otherwise>
 </c:choose></h1>
-<form method="<c:choose><c:when test="${editIntervention}">PUT</c:when><c:otherwise>POST</c:otherwise></c:choose>"
-	action="<c:out value="${baseUrl}" />/speaker/intervention/edit/" id="interventionform">
+<form method="POST" action="<c:out value="${baseUrl}" />/speaker/intervention/edit/" id="interventionform">
 	<c:if test="${editIntervention}"><input type="hidden" name="id" value="${intervention.id}" /></c:if>
 	<div class="clearfix<c:if test="${errorCount > 0}"> <c:choose><c:when test="${not empty subjectError}">error</c:when><c:otherwise>success</c:otherwise></c:choose></c:if>">
 		<label for="subject">Sujet</label>
