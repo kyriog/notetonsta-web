@@ -5,7 +5,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
 import com.supinfo.notetonsta.DAO.InterventionDAO;
-import com.supinfo.notetonsta.entity.Campus;
 import com.supinfo.notetonsta.entity.Intervention;
 
 public class JPAInterventionDAO implements InterventionDAO {
