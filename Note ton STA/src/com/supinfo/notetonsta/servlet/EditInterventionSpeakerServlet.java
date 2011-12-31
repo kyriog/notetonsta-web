@@ -51,7 +51,7 @@ public class EditInterventionSpeakerServlet extends BaseServlet {
 		CampusDAO campusManager = DAOFactory.getCampusDAO();
 		List<Campus> campuses = campusManager.listAllCampuses();
 		request.setAttribute("campuses", campuses);
-		request.getRequestDispatcher("/editIntervention.jsp").forward(request, response);
+		request.getRequestDispatcher("/editInterventionSpeaker.jsp").forward(request, response);
 	}
 
 	@Override
