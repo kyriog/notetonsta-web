@@ -27,8 +27,18 @@ public class EditInterventionSpeakerServlet extends BaseServlet {
 	@Override
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doDelete(req, resp);
+		String interventionParam = req.getParameter("id");
+		if(interventionParam != null) {
+			Long interventionId = "".equals(interventionParam) ? 0 : Long.valueOf(interventionParam);
+			InterventionDAO interventionManager = DAOFactory.getInterventionDAO();
+			Intervention intervention = interventionManager.getInterventionById(interventionId);
+			if(intervention == null) {
+				resp.sendRedirect(getServletContext().getContextPath() + "/");
+			} else {
+				interventionManager.deleteIntervention(intervention);
+				resp.sendRedirect(getServletContext().getContextPath() + "/");
+			}
+		}
 	}
 
 	@Override
