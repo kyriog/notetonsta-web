@@ -34,7 +34,7 @@ public class JPAInterventionDAO implements InterventionDAO {
 
 		try {
 			em.getTransaction().begin();
-			em.persist(intervention);
+			em.merge(intervention);
 			em.getTransaction().commit();
 		} finally {
 			if(em.getTransaction().isActive()) em.getTransaction().rollback();
