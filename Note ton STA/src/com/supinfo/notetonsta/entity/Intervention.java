@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.Fetch;
+
 @Entity
 public class Intervention {
 	@Id
@@ -24,7 +26,7 @@ public class Intervention {
 	@Temporal(value = TemporalType.DATE)
 	private Date dateEnd;
 	private int status;
-	@OneToMany(mappedBy="intervention")
+	@OneToMany(mappedBy="intervention", fetch=FetchType.EAGER)
 	private List<Evaluation> evaluations;
 	@Transient
 	private float speakerNote = (float) 0;
