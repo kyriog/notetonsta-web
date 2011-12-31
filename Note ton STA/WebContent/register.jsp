@@ -2,7 +2,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/templates/header.jsp" %>
 <h1>Créer un compte</h1>
-<c:out value="${firstname}" />
 <c:if test="${errorCount > 0}"><div class="alert-message error">Il y a <c:out value="${errorCount}" /> erreur(s) dans votre saisie :</div></c:if>
 <form method="POST" action="<c:out value="${baseUrl}" />/register" id="registerform">
 	<div class="clearfix<c:if test="${errorCount > 0}"> <c:choose><c:when test="${not empty firstnameError}">error</c:when><c:otherwise>success</c:otherwise></c:choose></c:if>">
