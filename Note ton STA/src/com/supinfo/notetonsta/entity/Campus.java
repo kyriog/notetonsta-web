@@ -3,8 +3,10 @@ package com.supinfo.notetonsta.entity;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
+@XmlRootElement
 public class Campus {
 	@Id
 	@GeneratedValue
