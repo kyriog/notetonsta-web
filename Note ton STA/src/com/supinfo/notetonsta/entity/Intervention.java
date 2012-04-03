@@ -6,8 +6,6 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import org.hibernate.annotations.Fetch;
-
 @Entity
 public class Intervention {
 	@Id
@@ -80,6 +78,7 @@ public class Intervention {
 	public void setDateEnd(Date dateEnd) {
 		this.dateEnd = dateEnd;
 	}
+	
 	public String getStatus() {
 		switch(status) {
 		case 0:
@@ -91,9 +90,13 @@ public class Intervention {
 		}
 		return null;
 	}
+	public int getRawStatus() {
+		return status;
+	}
 	public void setStatus(int status) {
 		this.status = status;
 	}
+	
 	public List<Evaluation> listEvaluations() {
 		return evaluations;
 	}
