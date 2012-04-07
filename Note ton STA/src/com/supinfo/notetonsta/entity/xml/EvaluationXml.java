@@ -1,17 +1,10 @@
-package com.supinfo.notetonsta.entity;
+package com.supinfo.notetonsta.entity.xml;
 
-import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
-import com.supinfo.notetonsta.entity.xml.EvaluationXml;
-
-@Entity
-public class Evaluation {
-	@Id
-	@GeneratedValue
-	private Long id;
-	@ManyToOne
-	@JoinColumn(name="intervention_fk")
-	private Intervention intervention;
+@XmlRootElement(name="evaluation")
+public class EvaluationXml {
+	private Long idIntervention;
 	private int idBooster;
 	private int speakerKnowledge;
 	private int speakerAbility;
@@ -19,32 +12,13 @@ public class Evaluation {
 	private int slideContent;
 	private int slideFormat;
 	private int slideExamples;
-	@Lob
 	private String comment;
 	
-	public Evaluation() {}
-	public Evaluation(EvaluationXml e) {
-		idBooster = e.getIdBooster();
-		speakerKnowledge = e.getSpeakerKnowledge();
-		speakerAbility = e.getSpeakerAbility();
-		speakerAnswers = e.getSpeakerAnswers();
-		slideContent = e.getSlideContent();
-		slideFormat = e.getSlideFormat();
-		slideExamples = e.getSlideExamples();
-		comment = e.getComment();
+	public Long getIdIntervention() {
+		return idIntervention;
 	}
-	
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public Intervention getIntervention() {
-		return intervention;
-	}
-	public void setIntervention(Intervention intervention) {
-		this.intervention = intervention;
+	public void setIdIntervention(Long idIntervention) {
+		this.idIntervention = idIntervention;
 	}
 	public int getIdBooster() {
 		return idBooster;
