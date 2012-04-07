@@ -63,7 +63,7 @@ public class JPACampusDAO implements CampusDAO {
 	public List<Campus> listAllCampuses() {
 		EntityManager em = emf.createEntityManager();
 		try {
-			Query query = em.createQuery("SELECT c FROM Campus c");
+			Query query = em.createQuery("SELECT c FROM Campus c ORDER BY c.name");
 			
 			@SuppressWarnings("unchecked")
 			List<Campus> campuses = query.getResultList();
