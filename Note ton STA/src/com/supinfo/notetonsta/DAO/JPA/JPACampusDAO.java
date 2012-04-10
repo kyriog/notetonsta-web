@@ -79,7 +79,7 @@ public class JPACampusDAO implements CampusDAO {
 		EntityManager em = emf.createEntityManager();
 		
 		try {
-			Query q = em.createQuery("SELECT c FROM Campus c LEFT JOIN FETCH c.interventions WHERE c.id = :id");
+			Query q = em.createQuery("SELECT c FROM Campus c LEFT JOIN FETCH c.interventions i WHERE c.id = :id ORDER BY i.dateStart");
 			q.setParameter("id", id);
 			try {
 				return (Campus) q.getSingleResult();
